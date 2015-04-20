@@ -3,11 +3,14 @@ package com.ysag.slice.db;
 import java.util.*;
 
 import android.content.*;
+import android.graphics.*;
+import android.graphics.drawable.*;
 import android.database.*;
 import android.database.sqlite.*;
 import android.util.Log;
 
 import com.ysag.slice.core.*;
+import com.ysag.slice.util.*;
 
 public class SliceDataSource {
     private SQLiteDatabase mDb;
@@ -37,13 +40,17 @@ public class SliceDataSource {
         cv.put(SliceOpenHelper.COLUMN_PATH, path);
         cv.put(SliceOpenHelper.COLUMN_DRAWABLE_PATH, drawablePath);
         long id = mDb.insert(SliceOpenHelper.TABLE_SLICES, null, cv);
-        return new Slice(id, name, path, drawablePath);
+        return new Slice(id, name, path, Util.loadDrawable(drawablePath));
+    }
+
+    public void deleteAllSlices() {
+        mDb.execSQL("DELETE FROM " + SliceOpenHelper.TABLE_SLICES + ";");
     }
 
     public List<Slice> getAllSlices() {
         List<Slice> ret = new ArrayList<Slice>();
 
-        Cursor cursor = mDb.query(SliceOpenHelper.TABLE_SLICES, allColumns, null, null, null, null, null); 
+        Cursor cursor = mDb.query(SliceOpenHelper.TABLE_SLICES, allColumns, null, null, null, null, SliceOpenHelper.COLUMN_ID); 
         cursor.moveToFirst();
 
         for (; !cursor.isAfterLast(); cursor.moveToNext()) {
@@ -58,6 +65,6 @@ public class SliceDataSource {
         String name = cursor.getString(cursor.getColumnIndex(SliceOpenHelper.COLUMN_NAME));
         String path = cursor.getString(cursor.getColumnIndex(SliceOpenHelper.COLUMN_PATH));
         String drawablePath = cursor.getString(cursor.getColumnIndex(SliceOpenHelper.COLUMN_DRAWABLE_PATH));
-        return new Slice(id, name, path, drawablePath);
+        return new Slice(id, name, path, Util.loadDrawable(drawablePath));
     }
 }

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Slice</string>
+    <string name="add_new">Add new</string>
+    <string name="menu_clear">Clear</string>
 </resources>

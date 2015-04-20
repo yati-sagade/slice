@@ -1,4 +1,7 @@
+package com.ysag.slice.core;
+
 import android.graphics.*;
+import android.graphics.drawable.*;
 
 
 public class Slice {
@@ -43,10 +46,15 @@ public class Slice {
     }
 
     public Drawable getDrawable() {
-        returm mDrawable;
+        return mDrawable;
     }
 
     public void setDrawable(Drawable drawable) {
         mDrawable = drawable;
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }

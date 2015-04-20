@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tile"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <ImageView
+        android:id="@+id/slice_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+        <!-- android:src="@drawable/ic_launcher" /> -->
+
+    <TextView
+        android:id="@+id/slice_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:gravity="center"
+        android:layout_alignLeft="@id/slice_img"
+        android:layout_alignTop="@id/slice_img"
+        android:layout_alignRight="@id/slice_img"
+        android:layout_alignBottom="@id/slice_img"
+        android:text="LAMAALAA"
+        android:textColor="#ffffff" />
+
+
+
+        <!-- android:layout_alignLeft="@+id/slice_img" -->
+        <!-- android:layout_alignTop="@+id/slice_img" -->
+        <!-- android:layout_alignRight="@+id/slice_img" -->
+        <!-- android:layout_alignBottom="@+id/slice_img" -->
+</RelativeLayout>
